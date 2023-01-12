@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ônix Rádio Romântica</string>
+    <string name="url_streaming">https://live1.livemus.com.br:6684</string>
+    <string name="url_whatsapp">https://api.whatsapp.com/send?phone=+55017981200305</string>
+</resources>

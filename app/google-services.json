@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "303312528768",
+    "project_id": "onix-radio-romantica",
+    "storage_bucket": "onix-radio-romantica.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303312528768:android:5eb47fac19569669690d65",
+        "android_client_info": {
+          "package_name": "br.com.onixradio.romantica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303312528768-ob6vu6skr3a74kso11frt8jtcnfpr83q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm7iC3rdQfPW1MssjpnxKggEswJzL4JgI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303312528768-ob6vu6skr3a74kso11frt8jtcnfpr83q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
