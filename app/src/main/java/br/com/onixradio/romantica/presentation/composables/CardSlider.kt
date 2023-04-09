@@ -29,27 +29,22 @@ fun CardSlider() {
         HorizontalPager(
             count = 3,
             state = pagerState,
-            // Add 32.dp horizontal padding to 'center' the pages
             contentPadding = PaddingValues(horizontal = 8.dp),
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
         ) { page ->
-            PagerSampleItem(
-                banner = when (page) {
-                    1 -> Card(R.drawable.banner1, "Aquela música que não tem idade")
-                    2 -> Card(R.drawable.banner2, "Você já ouviu sua música favorita hoje?")
-                    else -> Card(R.drawable.banner3, "Qual música não saí dos seus ouvidos")
-
-                }
-            )
+            val banner = when (page) {
+                1 -> Card(R.drawable.banner1, "Aquela música que não tem idade")
+                2 -> Card(R.drawable.banner2, "Você já ouviu sua música favorita hoje?")
+                else -> Card(R.drawable.banner3, "Qual música não saí dos seus ouvidos")
+            }
+            PagerSampleItem(banner)
         }
 
         HorizontalPagerIndicator(
             pagerState = pagerState,
             activeColor = Color.White,
             inactiveColor = Color.LightGray,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
 }
@@ -57,6 +52,13 @@ fun CardSlider() {
 @Composable
 internal fun PagerSampleItem(
     banner: Card,
+    modifier: Modifier = Modifier
 ) {
-    Image(painterResource(banner.image), banner.contentDescription, modifier = Modifier.padding(20.dp))
+    Image(
+        painter = painterResource(banner.image),
+        contentDescription = banner.contentDescription,
+        modifier = modifier
+            .padding(20.dp)
+            .fillMaxWidth()
+    )
 }

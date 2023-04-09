@@ -16,6 +16,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.onixradio.romantica.presentation.ui.theme.boldStyle
+import br.com.onixradio.romantica.presentation.ui.theme.mediumStyle
 import br.com.onixradio.romantica.presentation.ui.theme.rubikFont
 
 @Composable
@@ -26,32 +28,19 @@ fun PlayingNow(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        AnimatedVisibility(visible = title.isNotEmpty()) {
+        AnimatedVisibility(visible = true) {
             Text(
                 text = buildAnnotatedString {
-                    withStyle(
-                        style = SpanStyle(
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = rubikFont,
-                            color = Color.White,
-                            fontSize = 16.sp,
-                        )
-                    ) {
+                    withStyle(style = boldStyle) {
                         append("Tocando agora: ")
                     }
-                    withStyle(
-                        style = SpanStyle(
-                            fontWeight = FontWeight.Medium,
-                            fontFamily = rubikFont,
-                            color = Color.White,
-                            fontSize = 16.sp
-                        )
-                    ) {
+                    withStyle(style = mediumStyle) {
                         append(title)
                     }
                 },
                 modifier = Modifier
-                    .padding(16.dp),
+                    .padding(16.dp)
+                    .align(Alignment.CenterHorizontally)
             )
         }
     }

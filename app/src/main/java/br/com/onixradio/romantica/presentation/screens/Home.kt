@@ -5,9 +5,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,15 +30,19 @@ import br.com.onixradio.romantica.presentation.viewmodels.MainViewModel
 fun Home() {
     val scrollState = rememberScrollState()
     val viewModel: MainViewModel =  hiltViewModel()
+
+    LaunchedEffect(key1 = viewModel.isPlaying) {
+        viewModel.getCurrentMusic()
+    }
+
+    val nowPlaying by viewModel.nowPlaying.collectAsState("")
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(scrollState)
     ) {
-        viewModel.musicNowPlaying()
-        val actualMusic = rememberSaveable { mutableStateOf("") }
         WelcomeToApp()
-        PlayingNow(actualMusic.value)
+        PlayingNow(nowPlaying)
         CardSlider()
     }
 }

@@ -18,6 +18,8 @@ import br.com.onixradio.romantica.presentation.ui.theme.rubikFont
 fun WelcomeToApp() {
     Column(
         modifier = Modifier.padding(30.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         Row {

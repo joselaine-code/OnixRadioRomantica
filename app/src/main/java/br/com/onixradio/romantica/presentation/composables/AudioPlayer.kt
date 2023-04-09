@@ -22,7 +22,7 @@ fun AudioPlayer(
     val playWhenReady = true
     val currentWindow = 0
     val playbackPosition = 0L
-    var isPlaying by remember { mutableStateOf(false) }
+    val isPlaying by remember { mutableStateOf(false) }
 
     val mExoPlayer = ExoPlayer.Builder(LocalContext.current)
         .build()

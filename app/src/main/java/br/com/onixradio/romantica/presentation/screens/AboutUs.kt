@@ -26,6 +26,7 @@ import br.com.onixradio.romantica.presentation.ui.theme.Typography
 fun AboutUs() {
     val scrollState = rememberScrollState()
     val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -33,35 +34,56 @@ fun AboutUs() {
             .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Image(
-            painter = painterResource(R.drawable.red_logo),
-            contentDescription = "Ondas de Rádio",
-            modifier = Modifier.size(200.dp)
+        LogoSection()
+        DescriptionSection(
+            year = "2008",
+            text = "A Ônix Rádio surgiu da paixão de José Carlos por músicas antigas no ano de 2008. Desde então, ela segue sendo uma das rádios mais ouvidas da região de São José do Rio Preto/SP e possui ouvintes pelo mundo todo.",
         )
-        Text(text = "2008", style = Typography.caption, modifier = Modifier.padding(top = 20.dp))
-        Text(
-            text = "A Ônix Rádio surgiu da paixão de José Carlos por músicas antigas no ano de 2008." +
-                    " Desde então, ela segue sendo uma das rádios mais ouvidas da região de São José do Rio Preto/SP e possui ouvintes pelo mundo todo.",
-            style = Typography.h3,
-            modifier = Modifier.padding(top = 20.dp)
-        )
-        Text(text = "2017", style = Typography.caption, modifier = Modifier.padding(top = 20.dp))
-        Text(
+        DescriptionSection(
+            year = "2017",
             text = "Em 2017, atendendo aos pedidos dos ouvintes, foi inaugurada a Ônix Rádio Sertaneja.",
-            style = Typography.h3,
-            modifier = Modifier.padding(top = 20.dp)
         )
-        IconButton(onClick = { sendWhatsApp(context = context) }) {
-            Image(
-                painter = painterResource(id = R.drawable.icon_whats),
-                contentDescription = "Enviar whatsapp",
-                modifier = Modifier
-                    .padding(top = 20.dp)
-                    .clip(CircleShape)
-                    .size(50.dp)
-            )
+        WhatsappIconButton(context = context)
+    }
+}
 
-        }
+@Composable
+private fun LogoSection() {
+    Image(
+        painter = painterResource(R.drawable.red_logo),
+        contentDescription = "Ondas de Rádio",
+        modifier = Modifier.size(200.dp)
+    )
+}
+
+@Composable
+private fun DescriptionSection(year: String, text: String) {
+    Column(
+        modifier = Modifier.padding(top = 20.dp),
+    ) {
+        Text(
+            text = year,
+            style = Typography.caption,
+        )
+        Text(
+            text = text,
+            style = Typography.h3,
+            modifier = Modifier.padding(top = 8.dp),
+        )
+    }
+}
+
+@Composable
+private fun WhatsappIconButton(context: Context) {
+    IconButton(onClick = { sendWhatsApp(context) }) {
+        Image(
+            painter = painterResource(id = R.drawable.icon_whats),
+            contentDescription = "Enviar whatsapp",
+            modifier = Modifier
+                .size(50.dp)
+                .clip(CircleShape)
+                .padding(top = 20.dp),
+        )
     }
 }
 
