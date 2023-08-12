@@ -8,7 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
-import android.widget.RemoteViews
+import android.support.v4.media.session.MediaSessionCompat
 import androidx.core.app.NotificationCompat
 import br.com.onixradio.romantica.R
 import com.google.android.exoplayer2.ExoPlayer
@@ -19,17 +19,16 @@ import javax.inject.Provider
 
 @AndroidEntryPoint
 @ServiceScoped
-class MediaService() : Service() {
+class MediaService : Service() {
 
     @Inject
     lateinit var exoPlayerProvider: Provider<ExoPlayer>
 
-    private lateinit var playPauseIntent: PendingIntent
+    private lateinit var playIntent: PendingIntent
+    private lateinit var pauseIntent: PendingIntent
     private lateinit var stopIntent: PendingIntent
 
     private lateinit var exoPlayer: ExoPlayer
-
-    private var isForeground = false
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -56,26 +55,31 @@ class MediaService() : Service() {
             manager.createNotificationChannel(notificationChannel)
         }
 
-        playPauseIntent = createPendingIntent(ACTION_PLAY)
-        stopIntent = createPendingIntent(ACTION_PAUSE)
+        playIntent = createPendingIntent(ACTION_PLAY)
+        pauseIntent = createPendingIntent(ACTION_PAUSE)
+        stopIntent = createPendingIntent(ACTION_STOP)
 
-        val notificationLayout = RemoteViews(packageName, R.layout.notification_player)
-        notificationLayout.setOnClickPendingIntent(R.id.notification_play_pause, playPauseIntent)
-        notificationLayout.setOnClickPendingIntent(R.id.notification_stop, stopIntent)
+        val mediaSession = MediaSessionCompat(this, "AudioPlayerSession")
 
         val notificationBuilder = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
-            .setContentTitle(getString(R.string.app_name))
-            .setContentText(getString(R.string.app_name))
             .setSmallIcon(R.drawable.red_logo)
-            .setContent(notificationLayout)
+            .setContentTitle(getString(R.string.app_name))
+            .setContentText("A mais romântica")
+            .addAction(R.drawable.ic_play, "Play", playIntent)
+            .addAction(R.drawable.ic_pause, "Pause", pauseIntent)
+            .addAction(R.drawable.ic_stop, "Stop", stopIntent)
+            .setStyle(
+                androidx.media.app.NotificationCompat.MediaStyle()
+                    .setShowActionsInCompactView(0,1,2)
+                    .setMediaSession(mediaSession.sessionToken)
+            )
             .setPriority(NotificationCompat.PRIORITY_LOW)
-            .setAutoCancel(false)
-            .setOngoing(true)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+
 
         val notification = notificationBuilder.build()
 
         startForeground(NOTIFICATION_ID, notification)
-        isForeground = true
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -86,25 +90,29 @@ class MediaService() : Service() {
     private fun handleIntent(intent: Intent?) {
         when (intent?.action) {
             ACTION_PLAY -> {
-                exoPlayer.playWhenReady = true
+                exoPlayer.prepare()
+                exoPlayer.play()
             }
+
             ACTION_PAUSE -> {
-                exoPlayer.playWhenReady = false
+                exoPlayer.pause()
             }
+
             ACTION_STOP -> {
-                exoPlayer.stop()
-                stopForeground(true)
-                stopSelf()
-                isForeground = false
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    exoPlayer.stop()
+                    stopForeground(STOP_FOREGROUND_REMOVE)
+                } else {
+                    exoPlayer.stop()
+                    stopForeground(true)
+                }
             }
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (isForeground) {
-            stopForeground(true)
-        }
+        stopForeground(true)
         exoPlayer.release()
     }
 

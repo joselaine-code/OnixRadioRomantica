@@ -15,10 +15,10 @@ class MainViewModel @Inject constructor(
     private val exoPlayer: ExoPlayer
 ) : ViewModel() {
 
-    private val _nowPlaying = MutableStateFlow<String>("")
+    private val _nowPlaying = MutableStateFlow("")
     val nowPlaying: StateFlow<String> = _nowPlaying
 
-    private val _isPlaying = MutableStateFlow<Boolean>(false)
+    private val _isPlaying = MutableStateFlow(false)
     val isPlaying: StateFlow<Boolean> = _isPlaying
 
     fun preparePlayer() {
