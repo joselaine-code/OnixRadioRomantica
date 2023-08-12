@@ -1,7 +1,11 @@
 package br.com.onixradio.romantica.presentation.composables
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,11 +19,12 @@ import br.com.onixradio.romantica.R
 import br.com.onixradio.romantica.presentation.ui.theme.rubikFont
 
 @Composable
-fun WelcomeToApp() {
+fun WelcomeToApp(modifier: Modifier) {
     Column(
-        modifier = Modifier.padding(30.dp),
+        modifier = modifier.padding(30.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Row {
             Text(
                 text = "Ônix Rádio Romântica",
