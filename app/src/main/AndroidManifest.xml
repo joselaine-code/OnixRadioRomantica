@@ -3,6 +3,8 @@
     package="br.com.onixradio.romantica">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
         android:name=".di.OnixRadioApp"
@@ -15,12 +17,16 @@
         <activity
             android:name=".presentation.screens.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.OnixRadioRomantica">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".data.service.MediaService"
+            android:enabled="true"
+            android:foregroundServiceType="mediaPlayback" />
     </application>
 </manifest>
