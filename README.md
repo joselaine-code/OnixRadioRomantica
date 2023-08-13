@@ -1,7 +1,5 @@
 # Onix Radio Romantica
 
-![Onix Radio Romantica Logo](logo.png)
-
 Bem-vindo ao projeto **Onix Radio Romantica**, uma aplicação de rádio online que traz músicas românticas para os ouvintes. Este aplicativo é desenvolvido utilizando as mais recentes tecnologias Android, como Compose, Accompanist, ExoPlayer, Kotlin KTS, Hilt e segue o padrão MVVM.
 
 ## Tecnologias Utilizadas
@@ -15,9 +13,6 @@ Bem-vindo ao projeto **Onix Radio Romantica**, uma aplicação de rádio online 
 
 ## Capturas de Tela
 
-![Captura de Tela 1](screenshots/snap1.png)
-![Captura de Tela 2](screenshots/snap2.png)
-![Captura de Tela 3](screenshots/snap3.png)
 
 ## Funcionalidades
 
