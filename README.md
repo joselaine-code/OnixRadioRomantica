@@ -12,7 +12,11 @@ Bem-vindo ao projeto **Onix Radio Romantica**, uma aplicação de rádio online 
 - **MVVM**: Arquitetura de projeto que separa a lógica de negócios da interface do usuário.
 
 ## Capturas de Tela
-
+<p float="left">
+   <img src="https://github.com/joselaine-code/OnixRadioRomantica/blob/main/screenshots/snap1.jpeg?raw=true" width="300"/> 
+  <img src="https://github.com/joselaine-code/OnixRadioRomantica/blob/main/screenshots/snap2.jpeg?raw=true" width="300" />
+   <img src="https://github.com/joselaine-code/OnixRadioRomantica/blob/main/screenshots/snap3.jpeg?raw=true" width="300" />
+</p>
 
 ## Funcionalidades
 
