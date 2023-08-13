@@ -38,4 +38,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas ou env
 
 ---
 
-**Onix Radio Romantica** - Desenvolvido por [Joselaine Aparecida dos Santos](https://github.com/joselaine-code/OnixRadioRomantica.git)
+**Onix Radio Romantica** - Desenvolvido por [Joselaine Aparecida dos Santos](https://github.com/joselaine-code/)
