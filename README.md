@@ -15,9 +15,9 @@ Bem-vindo ao projeto **Onix Radio Romantica**, uma aplicação de rádio online 
 
 ## Capturas de Tela
 
-![Captura de Tela 1](screenshots/screenshot1.png)
-![Captura de Tela 2](screenshots/screenshot2.png)
-![Captura de Tela 3](screenshots/screenshot3.png)
+![Captura de Tela 1](screenshots/snap1.png)
+![Captura de Tela 2](screenshots/snap2.png)
+![Captura de Tela 3](screenshots/snap3.png)
 
 ## Funcionalidades
 
