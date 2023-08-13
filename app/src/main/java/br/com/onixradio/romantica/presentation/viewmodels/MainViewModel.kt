@@ -49,9 +49,4 @@ class MainViewModel @Inject constructor(
         }
         exoPlayer.addListener(listener)
     }
-
-    override fun onCleared() {
-        super.onCleared()
-        exoPlayer.release()
-    }
 }
